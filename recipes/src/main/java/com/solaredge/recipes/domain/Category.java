@@ -1,5 +1,8 @@
 package com.solaredge.recipes.domain;
 
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -8,6 +11,8 @@ import javax.persistence.ManyToMany;
 import java.util.Set;
 
 @Entity
+@Data
+@EqualsAndHashCode(exclude = {"recipes"})
 public class Category {
 
     @Id
@@ -19,15 +24,6 @@ public class Category {
     @ManyToMany(mappedBy = "categories")
     private Set<Recipe> recipes;
 
-    public Long getId() {
-        return id;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public Set<Recipe> getRecipes() {
-        return recipes;
+    public Category() {
     }
 }

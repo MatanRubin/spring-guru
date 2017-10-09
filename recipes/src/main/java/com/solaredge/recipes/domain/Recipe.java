@@ -1,5 +1,7 @@
 package com.solaredge.recipes.domain;
 
+import lombok.Data;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -16,6 +18,7 @@ import javax.persistence.OneToOne;
 import java.util.Set;
 
 @Entity
+@Data
 public class Recipe {
 
     @Id
@@ -28,6 +31,8 @@ public class Recipe {
     private Integer servings;
     private String source;
     private String url;
+
+    @Lob
     private String directions;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "recipe")
@@ -48,51 +53,37 @@ public class Recipe {
         inverseJoinColumns = @JoinColumn(name = "category_id"))
     private Set<Category> categories;
 
-    public Long getId() {
-        return id;
+    public Recipe() {
     }
 
-    public String getDescription() {
-        return description;
-    }
+    public Recipe(
+            String description,
+            Integer prepTime,
+            Integer cookTime,
+            Integer servings,
+            String source,
+            String url,
+            String directions,
+            Set<Ingredient> ingredients,
+            Byte[] image,
+            Difficulty difficulty,
+            Notes notes,
+            Set<Category> categories) {
+        this.description = description;
+        this.prepTime = prepTime;
+        this.cookTime = cookTime;
+        this.servings = servings;
+        this.source = source;
+        this.url = url;
+        this.directions = directions;
+        this.ingredients = ingredients;
+        this.image = image;
+        this.difficulty = difficulty;
+        this.notes = notes;
+        this.categories = categories;
 
-    public Integer getPrepTime() {
-        return prepTime;
-    }
-
-    public Integer getCookTime() {
-        return cookTime;
-    }
-
-    public Integer getServings() {
-        return servings;
-    }
-
-    public String getSource() {
-        return source;
-    }
-
-    public String getUrl() {
-        return url;
-    }
-
-    public String getDirections() {
-        return directions;
-    }
-
-    public Byte[] getImage() {
-        return image;
-    }
-
-    public Notes getNotes() {
-        return notes;
-    }
-
-    public Difficulty getDifficulty() {
-        return difficulty;
-    }
-
-    public Set<Category> getCategories() {
-        return categories;
+        // set bidirectional relationships
+        notes.setRecipe(this);
+        ingredients.forEach(ingredient -> ingredient.setRecipe(this));
     }
 }

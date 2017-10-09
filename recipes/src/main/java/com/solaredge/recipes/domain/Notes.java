@@ -1,5 +1,8 @@
 package com.solaredge.recipes.domain;
 
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -8,6 +11,8 @@ import javax.persistence.Lob;
 import javax.persistence.OneToOne;
 
 @Entity
+@Data
+@EqualsAndHashCode(exclude = {"recipe"})
 public class Notes {
 
     @Id
@@ -20,15 +25,10 @@ public class Notes {
     @OneToOne
     private Recipe recipe;
 
-    public Long getId() {
-        return id;
+    public Notes() {
     }
 
-    public String getRecipeNotes() {
-        return recipeNotes;
-    }
-
-    public Recipe getRecipe() {
-        return recipe;
+    public Notes(String recipeNotes) {
+        this.recipeNotes = recipeNotes;
     }
 }
