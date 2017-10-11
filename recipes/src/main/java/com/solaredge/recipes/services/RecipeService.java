@@ -4,5 +4,7 @@ import com.solaredge.recipes.domain.Recipe;
 
 public interface RecipeService {
 
-    public Iterable<Recipe> getRecipes();
+    Iterable<Recipe> getRecipes();
+
+    Recipe getRecipeById(Long id);
 }

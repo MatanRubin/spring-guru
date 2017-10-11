@@ -103,6 +103,7 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> 
                 null,
                 Difficulty.EASY,
                 new Notes(
+                        null,
                         "Feel free to experiment! One classic Mexican guacamole has pomegranate seeds and chunks " +
                                 "of peaches in it (a Diana Kennedy favorite). Try guacamole with added pineapple, " +
                                 "mango, or strawberries.\n" +
@@ -110,7 +111,8 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> 
                                 "of availability of other ingredients stop you from making guacamole.\n" +
                                 "To extend a limited supply of avocados, add either sour cream or cottage cheese to " +
                                 "your guacamole dip. Purists may be horrified, but so what? It tastes great.\n" +
-                                "\n"
+                                "\n",
+                        null
                 ),
                 new HashSet<>(Arrays.asList(mexicanCategory, americanCategory)));
 
@@ -142,7 +144,11 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> 
                         new Ingredient("paprika (hot or sweet)", new BigDecimal(0.5), teaspoonUom))),
                 null,
                 Difficulty.MODERATE,
-                new Notes("Read more: http://www.simplyrecipes.com/recipes/spicy_chicken_nuggets_chicharrones_de_pollo/#ixzz4uMD3QU13"),
+                new Notes(
+                        null,
+                        "Read more: http://www.simplyrecipes.com/recipes/spicy_chicken_nuggets_chicharrones_de_pollo/#ixzz4uMD3QU13",
+                        null
+                ),
                 new HashSet<>(Collections.singletonList(mexicanCategory)));
 
         recipeRepository.saveAll(new HashSet<>(Arrays.asList(guacamoleRecipe, chickenRecipe)));

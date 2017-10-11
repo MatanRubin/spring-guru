@@ -1,5 +1,6 @@
 package com.solaredge.recipes.domain;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 import javax.persistence.CascadeType;
@@ -19,6 +20,7 @@ import java.util.Set;
 
 @Entity
 @Data
+@AllArgsConstructor
 public class Recipe {
 
     @Id

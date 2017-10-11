@@ -1,7 +1,6 @@
 package com.solaredge.recipes.domain;
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
+import lombok.*;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -12,9 +11,11 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import java.math.BigDecimal;
 
-@Entity
+@AllArgsConstructor
+@NoArgsConstructor
 @Data
 @EqualsAndHashCode(exclude = {"recipe"})
+@Entity
 public class Ingredient {
 
     @Id
@@ -31,6 +32,13 @@ public class Ingredient {
     private UnitOfMeasure unitOfMeasure;
 
     public Ingredient(String description, BigDecimal amount, UnitOfMeasure unitOfMeasure) {
+        this.description = description;
+        this.amount = amount;
+        this.unitOfMeasure = unitOfMeasure;
+    }
+
+    public Ingredient(Long id, String description, BigDecimal amount, UnitOfMeasure unitOfMeasure) {
+        this.id = id;
         this.description = description;
         this.amount = amount;
         this.unitOfMeasure = unitOfMeasure;
