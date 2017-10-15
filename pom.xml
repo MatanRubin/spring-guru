@@ -12,6 +12,7 @@
     <modules>
         <module>books-webapp</module>
         <module>recipes</module>
+        <module>spring-rest-client-examples</module>
     </modules>
 
 </project>
