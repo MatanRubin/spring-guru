@@ -5,10 +5,12 @@ import com.solaredge.spring5mvcrest.domain.Category;
 import com.solaredge.spring5mvcrest.mapper.CategoryMapper;
 import com.solaredge.spring5mvcrest.repositories.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Service
 public class CategoryServiceImpl implements CategoryService {
 
     private final CategoryMapper mapper;
